@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/admin/LayoutPadrao.xhtml">
+
+	<ui:define name="titulo">Gest&atilde;o de Galerias</ui:define>
+	<ui:define name="corpo">
+		<h:form>
+
+			<h1>Galerias</h1>
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton value="Pesquisar" action="#{galeriaManager.pesquisar()}" update="produtosTable"/>
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="Novo" outcome="/admin/galeria/cadastro" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			  <p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px"
+                                    columnClasses="rotulo, campo">
+                            <p:outputLabel value="Nome" for="Nome" />
+				<p:inputText id="Nome" size="50" maxlength="70"  value="#{galeriaManager.nome}" />
+
+				
+				
+
+			
+					
+				
+                    </p:panelGrid>
+                    
+                     <p:dataTable id="produtosTable" value="#{galeriaManager.filtrados}" var="galeria"
+                            style="margin-top: 20px" emptyMessage="Nenhum produto encontrado." rows="20"
+                            paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+                            
+                            
+                             <p:column headerText="Codigo" style="text-align: center; width: 100px">
+                                    <h:outputText value="#{galeria.id}" />
+                            </p:column>
+                            <p:column headerText="Titulo">
+                                    <h:outputText value="#{galeria.titulo}" />
+                            </p:column>
+                            v<p:column headerText="Descricao" style="">
+                                    <h:outputText value="#{galeria.descricao}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Ativo" style="width: 250px">
+                                    <h:outputText value="#{galeria.ativa}"/>
+                            </p:column>
+                           
+                            
+                              <p:column style="width: 100px; text-align: center">
+                                    <p:button icon="ui-icon-pencil" title="Editar" />
+                                    <p:commandButton icon="ui-icon-trash" title="Excluir" />
+                            </p:column>
+                            </p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

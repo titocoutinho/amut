@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Login</title>
+
+        <h:outputStylesheet library="css" name="sistema.css"/>
+    </h:head>
+    <h:body>
+            <div id="login-dialog">
+                    <p>#{bundle.loginHello}</p>
+                    
+                    <h:form id="frm">
+                    <p:growl showDetail="false" life="3000" />
+                            <h:panelGrid columns="2" styleClass="grid-login">
+                            
+                            
+                            <h:outputLabel value="#{bundle.loginUserName}" />
+			<h:inputText value="#{loginManager.email}" label="Email" id="email" required="true">
+				<f:validateLength minimum="5" />
+			</h:inputText>
+			<h:outputLabel value="#{bundle.loginPassword}" />
+			
+			<h:inputSecret value="#{loginManager.password}" label="Login" id="senha" required="true" autocomplete="off" >
+				<f:validateLength minimum="5" />
+			</h:inputSecret>
+                            
+                                   
+                            </h:panelGrid>
+                            <p:commandButton action="#{loginManager.login}" value="Login" ajax="false" />
+                    </h:form>
+            </div>
+    </h:body>
+</html>

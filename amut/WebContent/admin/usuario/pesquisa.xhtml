@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/admin/LayoutPadrao.xhtml">
+
+	<ui:define name="titulo">Gest&atilde;o de Usu&aacute;rios</ui:define>
+	<ui:define name="corpo">
+		<h:form>
+
+			<h1>Novo Usu&aacute;rio</h1>
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton value="Pesquisar"
+						action="#{usuarioManager.pesquisar()}" update="produtosTable" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="Novo" outcome="/admin/usuario/cadastro" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
+				<p:outputLabel value="Nome" for="Nome" />
+				<p:inputText id="Nome" size="50" maxlength="70"
+					value="#{usuarioManager.nome}" />
+				<p:outputLabel value="Email" for="Email" />
+				<p:inputText id="Email" size="70" maxlength="100"
+					value="#{usuarioManager.email}" />
+				<p:outputLabel value="Administrador" for="Administrador" />
+				<p:selectOneMenu id="Administrador"
+					value="#{usuarioManager.administrador}">
+					<f:selectItems value="#{usuarioManager.boleano}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Ativo" for="Ativo" />
+				<p:selectOneMenu id="Ativo" value="#{usuarioManager.ativo}">
+					<f:selectItems value="#{usuarioManager.boleano}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<p:dataTable id="produtosTable" value="#{usuarioManager.filtrados}"
+				var="usuario" style="margin-top: 20px"
+				emptyMessage="Nenhum produto encontrado." rows="20" paginator="true"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<p:column headerText="Codigo">
+					<h:outputText value="#{usuario.id}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{usuario.nome}" />
+				</p:column>
+				<p:column headerText="email">
+					<h:outputText value="#{usuario.email}" />
+				</p:column>
+				<p:column headerText="aniversario">
+					<h:outputText value="#{usuario.nascimento}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+
+				<p:column style="width: 100px; text-align: center">
+					<p:button icon="ui-icon-pencil" title="Editar" />
+					<p:commandButton icon="ui-icon-trash" title="Excluir" />
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

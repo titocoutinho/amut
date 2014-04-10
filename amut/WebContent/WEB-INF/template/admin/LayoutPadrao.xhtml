@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico" />
+	<title><ui:insert name="titulo">Controle de Pacientes e Atendimentos ONLINE</ui:insert></title>
+
+	<h:outputStylesheet library="css" name="sistema.css" />
+	<h:outputStylesheet library="css" name="tabela.css" />
+	<h:outputStylesheet library="css" name="default.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+
+</h:head>
+
+<h:body>
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="images" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<header>
+	<div style="float: left">
+		<h:link outcome="/admin/index">
+			<h:graphicImage library="images" name="logo-algaworks.png" />
+		</h:link>
+	</div>
+
+	<div style="float: right; margin-right: 110px">
+		
+			
+<span style="float: left; height: 30px; line-height: 30px; margin-right: 60px">
+		<h:form style="display: inline-block">
+			<p:menubar styleClass="menu-sistema">
+
+
+				<p:submenu label="Cadastros"  styleClass="menu-sistema">
+
+					<p:submenu label="Usuário">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/usuario/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/usuario/pesquisa" />
+					</p:submenu>
+
+					<p:submenu label="Parametro">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/parametro/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/parametro/pesquisa" />
+					</p:submenu>
+					<p:submenu label="Categoria">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/categoria/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/categoria/pesquisa" />
+					</p:submenu>
+					<p:submenu label="Municipio">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/municipio/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/municipio/pesquisa" />
+					</p:submenu>
+
+					<p:submenu label="Galeria">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/galeria/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/galeria/pesquisa" />
+					</p:submenu>
+
+					<p:submenu label="Evento">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/evento/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/evento/pesquisa" />
+					</p:submenu>
+
+					<p:submenu label="Caracteristica">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/caracteristica/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/caracteristica/pesquisa" />
+					</p:submenu>
+					<p:submenu label="Artigo">
+						<p:menuitem value="Novo" icon="ui-icon-contact"
+							outcome="/admin/artigo/cadastro" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa"
+							outcome="/admin/artigo/pesquisa" />
+					</p:submenu>
+
+				</p:submenu>
+				
+				<p:menuitem id="sair" value="#{bundle.logOut}"
+					action="#{usuarioManagerAux.logOut()}" ajax="false" />
+			</p:menubar>
+		</h:form> </span> 
+		<span style="height: 30px; line-height: 30px;">Olá, #{usuarioManagerAux.usuario.nome}! </span> 
+	</div>
+	<div style="clear: both"></div>
+	</header>
+
+	<div id="conteudo">
+		<ui:insert name="corpo" />
+	</div>
+
+	<p:separator style="margin-top: 200px" />
+
+	<footer> @AMUT </footer>
+
+
+</h:body>
+
+</html>
