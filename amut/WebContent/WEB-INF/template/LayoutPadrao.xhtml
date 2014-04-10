@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">Controle de Pacientes e Atendimentos ONLINE</ui:insert></title>
+	<h:outputStylesheet library="css" name="style.css" />
+	
+	<h:outputStylesheet library="css" name="sistema.css" />
+	<h:outputStylesheet library="css" name="tabela.css" />
+	
+	<h:outputStylesheet name="tipsy/css.tipsy.css" library="js"/>
+	<h:outputStylesheet name="prettyphoto/css.prettyPhoto.css" library="js"/>
+	<h:outputStylesheet name="validity/css.validity.css" library="js"/>
+	
+	<link href="resources/css/style-print.css" rel="stylesheet" type="text/css" media="print" /> 
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700'
+		rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
+		rel='stylesheet' type='text/css' />
+
+</h:head>
+
+<h:body>
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="images" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<header>
+	<div style="float: left">
+		<h:link outcome="/index">
+			<h:graphicImage library="images" name="logo-algaworks.png" />
+		</h:link>
+	</div>
+
+	<div style="float: right; margin-right: 110px">
+		<span
+			style="float: left; height: 30px; line-height: 30px; margin-right: 60px">
+			Olá, #{usuarioManager.usuario.name}! </span>
+
+		<h:form style="display: inline-block">
+			<p:menubar styleClass="menu-sistema">
+				<p:submenu label="Cadastros Basicos">
+					<p:submenu label="Estado">
+						<p:menuitem value="Novo" icon="ui-icon-contact" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa" />
+					</p:submenu>
+					<p:submenu label="Cidade">
+						<p:menuitem value="Novo" icon="ui-icon-contact" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa" />
+					</p:submenu>
+					<p:submenu label="Bairro">
+						<p:menuitem value="Novo" icon="ui-icon-contact" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa" />
+					</p:submenu>
+				</p:submenu>
+				<p:submenu label="Cadastros">
+					<p:submenu label="Atendimento">
+						<p:menuitem value="Novo" icon="ui-icon-contact" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa" />
+					</p:submenu>
+					<p:submenu label="Usuário">
+						<p:menuitem value="Novo" icon="ui-icon-contact" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa" />
+					</p:submenu>
+					<p:submenu label="Pessoa">
+						<p:menuitem value="Novo" icon="ui-icon-contact" ajax="false" />
+						<p:menuitem icon="ui-icon-search" value="Pesquisa" />
+					</p:submenu>
+					<p:separator />
+					<p:menuitem value="Categorias" />
+					<p:menuitem value="Produtos" />
+				</p:submenu>
+				<p:submenu icon="ui-icon-gear" label="Relatório">
+					<p:menuitem value="Atendimento" />
+				</p:submenu>
+				<p:submenu label="Pedidos">
+					<p:menuitem value="Novo pedido" />
+					<p:menuitem value="Pesquisa" />
+				</p:submenu>
+				<p:menuitem id="sair" value="#{bundle.logOut}"
+					action="#{usuarioManager.logOut()}" ajax="false" />
+			</p:menubar>
+		</h:form>
+	</div>
+	<div style="clear: both"></div>
+	</header>
+	<div id="wrap">
+		<div id="content" class="fixed">
+			<div id="conteudo">
+				<ui:insert name="corpo" />
+			</div>
+		</div>
+	</div>
+	<p:separator style="margin-top: 20px" />
+
+	<footer> Sistema de Cadastros de Pacientes </footer>
+
+
+</h:body>
+
+</html>

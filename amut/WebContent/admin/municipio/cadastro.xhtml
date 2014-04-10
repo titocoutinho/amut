@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/admin/LayoutPadrao.xhtml">
+
+	<ui:define name="titulo">Gest&atilde;o de Municipios</ui:define>
+	<ui:define name="corpo">
+		<h:form>
+		<p:messages/>
+			<h1>Novo Municipio</h1>
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/admin/municipio/cadastro" />
+					<p:commandButton value="Salvar" id="botaoSalvar" action="#{municipioManager.novo()}" update="@form" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="Pesquisa" outcome="/admin/municipio/pesquisa" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
+				<p:outputLabel value="Nome" for="Nome" />
+				<p:inputText id="Nome" size="50" maxlength="70"  value="#{municipioManager.municipio.nome}" />
+
+				<p:outputLabel value="Sigla" for="Email" />
+				<p:inputText id="Email" size="70" maxlength="100"   value="#{municipioManager.municipio.sigla}"/>
+
+					<p:outputLabel value="Ativo" for="Ativo" />
+				<p:selectOneMenu id="Ativo" value="#{municipioManager.municipio.ativo}">
+					<f:selectItems value="#{municipioManager.boleano}" />
+				</p:selectOneMenu>
+
+
+
+
+			</p:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
